@@ -1,0 +1,1 @@
+#this is used to log information about the checks and punishments that are being performed, as well as any errors that may occur.

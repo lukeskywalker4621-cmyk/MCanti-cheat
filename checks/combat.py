@@ -1,0 +1,1 @@
+#used to check for combat related cheats such as kill aura, reach, and auto clicker.

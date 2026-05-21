@@ -1,0 +1,1 @@
+#this is used to manage bans and other punishments for players who are caught cheating.
