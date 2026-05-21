@@ -3,4 +3,6 @@
 
 
 ## License 
-<span style="color:red">Distributed under GPL-3.0 License. See the 'License' file for more details.</span>
+Distributed under GPL-3.0 License. See the 'License' file for more details.
+
+*Disclaimer no anti-cheat can detect every instance of hacking this is purely meant to assist in moderation not attempt to replace it*
