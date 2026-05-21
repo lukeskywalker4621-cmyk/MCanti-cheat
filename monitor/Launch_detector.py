@@ -4,6 +4,9 @@
 import psutil
 import time
 from HWID import get_hardware_id
+from HWID import save_hardware_id
+from HWID import no_duplicate_hwid
+import json
 
 def is_minecraft_running():
     for proc in psutil.process_iter(['name', 'cmdline']):
@@ -28,13 +31,19 @@ def detect_launcher():
         if currently_running and not is_running:
             print("Minecraft has been launched!")
             hwid = get_hardware_id()
-            print(f"Hardware ID: {hwid}")
-            is_running = True
-            
+            save_hardware_id(hwid)
         elif not currently_running and is_running:
             print("Minecraft has been closed.")
             is_running = False
         time.sleep(5)
+def no_duplicate_hwid(hwid):
+    try:
+        with open('HWIDs.json', 'r') as f:
+            data = json.load(f)
+            return data.get('hardware_id') != hwid
+    except FileNotFoundError:
+        return True  # No existing HWID, so it's not a duplicate
 
 if __name__ == "__main__":
     detect_launcher()
+    no_duplicate_hwid(get_hardware_id())

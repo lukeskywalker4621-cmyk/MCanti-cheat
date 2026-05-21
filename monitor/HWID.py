@@ -1,4 +1,5 @@
 import subprocess
+import json
 
 def get_hardware_id():
     # Windows Serial Extractor
@@ -15,3 +16,17 @@ def get_hardware_id():
         return f"Motherboard: {mb}, CPU: {cpu}, Storage: {disk}, Memory: {memory}"
     except Exception as e:
         return f"Error retrieving hardware ID: {e}"
+    
+def save_hardware_id(hwid):
+    with open('HWIDs.json', 'w') as f:
+        json.dump({'hardware_id': hwid}, f)
+
+def no_duplicate_hwid(hwid):
+    try:
+        with open('HWIDs.json', 'r') as f:
+            data = json.load(f)
+            return data.get('hardware_id') != hwid
+    except FileNotFoundError:
+        return True  # No existing HWID, so it's not a duplicate
+
+    
